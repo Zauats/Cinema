@@ -1,0 +1,30 @@
+﻿<Page x:Class="VirtualCinema.Pages.AdminMode.CreateCinema"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VirtualCinema.Pages.AdminMode"
+      mc:Ignorable="d" 
+      d:DesignHeight="480" d:DesignWidth="1400"
+      Title="CreateCinema">
+
+    <Grid Margin="0,0,899,334">
+        <TextBox x:Name="cinemaName" Text="" Margin="68,50,111,32" FontSize="25"></TextBox>
+        <TextBox x:Name="cinemaAdress" Text="" Margin="458,173,-279,-91" FontSize="25"></TextBox>
+        <TextBox x:Name="cinemaStars" Text="" Margin="458,50,-279,32" FontSize="25"></TextBox>
+        <TextBox x:Name="nearestMetro" Text="" Margin="68,173,111,-91" FontSize="25"></TextBox>
+        <Button  Content="Создать кинотеатр" FontSize="20" HorizontalAlignment="Left" Margin="68,350,0,-271" VerticalAlignment="Top" Width="322" Height="67" Background="{x:Null}" Foreground="White" Click="CreateCinemaClick"/>
+        <ScrollViewer HorizontalAlignment="Left" Height="367" Margin="892,50,-834,-271" VerticalAlignment="Top" Width="443">
+            <StackPanel x:Name="cinemas">
+
+            </StackPanel>
+        </ScrollViewer>
+        <Button x:Name="changeCinemaButton" Content="Изменить кинотеатр" FontSize="20" HorizontalAlignment="Left" Margin="516,308,-229,-229" VerticalAlignment="Top" Width="214" Height="67" Background="{x:Null}" Foreground="White" Click="ChangeCinemaClick" RenderTransformOrigin="0.5,0.5" Visibility="Hidden"/>
+        <Button x:Name="deleteCinemaButton" Content="Удалить кинотеатр" FontSize="20" HorizontalAlignment="Left" Margin="516,395,-229,-316" VerticalAlignment="Top" Width="214" Height="67" Background="{x:Null}" Foreground="White" Click="DeleteCinemaClick" RenderTransformOrigin="0.5,0.5" Visibility="Hidden"/>
+        <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="68,26,0,0" TextWrapping="Wrap" Text="название кинотеатра" VerticalAlignment="Top" Height="24" Width="164"/>
+        <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="458,26,-121,0" TextWrapping="Wrap" Text="количество звезд" VerticalAlignment="Top" Height="24" Width="164"/>
+        <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="68,149,0,-27" TextWrapping="Wrap" Text="ближайшее метро" VerticalAlignment="Top" Height="24" Width="164"/>
+        <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="458,149,-121,-27" TextWrapping="Wrap" Text="адрес" VerticalAlignment="Top" Height="24" Width="164"/>
+
+    </Grid>
+</Page>

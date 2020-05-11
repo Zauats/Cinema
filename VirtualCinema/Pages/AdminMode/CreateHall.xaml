@@ -1,0 +1,31 @@
+﻿<Page x:Class="VirtualCinema.Pages.AdminMode.CreateHall"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VirtualCinema.Pages.AdminMode"
+      mc:Ignorable="d" 
+      d:DesignHeight="480" d:DesignWidth="1400"
+      Title="CreateHall">
+    <Grid>
+        <TextBox x:Name="rowQuantity" Text="" Margin="860,293,376,123" FontSize="25"/>
+        <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="860,269,0,0" TextWrapping="Wrap" Text="Введите количество рядов" VerticalAlignment="Top" Height="24" Width="164"/>
+        <TextBox x:Name="columnQuantity" Text="" Margin="860,172,376,244" FontSize="25"/>
+        <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="860,148,0,0" TextWrapping="Wrap" Text="колчество мест в ряду" VerticalAlignment="Top" Height="24" Width="164"/>
+        <ComboBox  x:Name="cinemas" FontSize="30" Margin="860,55,272,361" SelectionChanged="Cinemas_SelectionChanged"></ComboBox>
+        <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="861,26,0,0" TextWrapping="Wrap" Text="Выберите принадлежность к кинотеатру" VerticalAlignment="Top" Height="24" Width="308"/>
+        <Grid x:Name="places" HorizontalAlignment="Left" Height="385" Margin="94,55,0,0" VerticalAlignment="Top" Width="504" ShowGridLines="True"/>
+        <ScrollViewer HorizontalAlignment="Left" Height="209" Margin="1043,148,0,0" VerticalAlignment="Top" Width="321">
+            <StackPanel x:Name="halls">
+
+            </StackPanel>
+        </ScrollViewer>
+        <TextBox x:Name="hallName" Text="" Margin="1168,50,36,361" FontSize="25"/>
+        <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="1168,26,0,0" TextWrapping="Wrap" Text="Название зала" VerticalAlignment="Top" Height="24" Width="164"/>
+        <Button  Content="Создать зал" FontSize="20" HorizontalAlignment="Left" Margin="861,373,0,0" VerticalAlignment="Top" Width="163" Height="67" Background="{x:Null}" Foreground="White" Click="CreateHallClick"/>
+        <Button x:Name="changeHallButton" Content="Изменить зал" FontSize="20" Margin="1033,373,204,0" VerticalAlignment="Top" Height="67" Background="{x:Null}" Foreground="White" Click="ChangeHallClick" Visibility="Hidden"/>
+        <Button x:Name="deleteHallButton" Content="Удалить зал" FontSize="20" HorizontalAlignment="Left" Margin="1201,373,0,0" VerticalAlignment="Top" Width="163" Height="67" Background="{x:Null}" Foreground="White" Click="DeleteHallClick" Visibility="Hidden"/>
+        <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="94,26,0,0" TextWrapping="Wrap" Text="Выберите места для посадки" VerticalAlignment="Top" Height="24" Width="308"/>
+
+    </Grid>
+</Page>

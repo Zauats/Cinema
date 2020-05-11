@@ -1,0 +1,18 @@
+﻿<Page x:Class="VirtualCinema.Pages.FilmsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VirtualCinema.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="617" d:DesignWidth="1500"
+      Title="FilmsPage">
+
+    <Grid Background="#FF212226">
+        <DatePicker x:Name="date" Margin="41,33,1301,538.8" FontSize="20" ></DatePicker>
+        <ScrollViewer Margin="41,103,10,43">
+            <StackPanel x:Name="sessions">
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

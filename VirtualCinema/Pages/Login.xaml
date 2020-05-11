@@ -1,0 +1,27 @@
+﻿<Page x:Class="VirtualCinema.Pages.Login"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VirtualCinema.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="470" d:DesignWidth="1400"
+      Title="Login">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFD4D4D4" Offset="1"/>
+                <GradientStop Color="White" Offset="0.679"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TextBox x:Name="password" Text="admin" HorizontalAlignment="Left" Margin="88,268,0,0" VerticalAlignment="Top" Height="68" Width="1139" BorderBrush="#FF8F929D"  FontSize="30"/>
+        <TextBox x:Name="email"  Text="admin" Margin="88,164,172,238.4" FontSize="30"></TextBox>
+        
+        <Image HorizontalAlignment="Left" Height="68" Margin="15,164,0,0" VerticalAlignment="Top" Width="73" Source="/VirtualCinema;component/Resource/mail.jpg"/>
+        <Image HorizontalAlignment="Left" Height="68" Margin="15,268,0,0" VerticalAlignment="Top" Width="73" Source="/VirtualCinema;component/Resource/password.jpg" RenderTransformOrigin="0.79,0.604"/>
+        <Button Content="Вход" HorizontalAlignment="Left" Margin="88,363,0,0" VerticalAlignment="Top" Width="175" Height="78" Background="#FF289F90" Foreground="White" FontSize="25" Click="EnterClick"/>
+        <TextBlock HorizontalAlignment="Left" Margin="88,140,0,0" FontSize="15" TextWrapping="Wrap" Text="Введите логин" VerticalAlignment="Top" Height="24" Width="164"/>
+        <TextBlock HorizontalAlignment="Left" Margin="88,244,0,0" FontSize="15" TextWrapping="Wrap" Text="Введите пароль" VerticalAlignment="Top" Height="24" Width="164"/>
+    </Grid>
+</Page>
