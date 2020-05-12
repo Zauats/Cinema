@@ -118,7 +118,7 @@ namespace VirtualCinema.Pages
                         timeString += ticket.Sessions.hour.ToString() + ":";
                         if (ticket.Sessions.minutes < 10) timeString += "0";
                         timeString += ticket.Sessions.minutes.ToString();
-                        message += $"билет {i}\n Фильм:{ticket.Sessions.Films.name} \n " +
+                        message += $"билет {i}\n Фильм:{ticket.Sessions.Films.name} \n  " +
                             ticket.Sessions.Session_types.session_type + "\n " +
                                     ticket.Sessions.Films.duration.ToString() + " мин" + "\n " +
                                     "оценка: " + ticket.Sessions.Films.rating.ToString() + "\n " +
