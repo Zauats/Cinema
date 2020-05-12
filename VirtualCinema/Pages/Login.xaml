@@ -15,7 +15,7 @@
                 <GradientStop Color="White" Offset="0.679"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <TextBox x:Name="password" Text="admin" HorizontalAlignment="Left" Margin="88,268,0,0" VerticalAlignment="Top" Height="68" Width="1139" BorderBrush="#FF8F929D"  FontSize="30"/>
+        <PasswordBox x:Name="password" Password="admin" HorizontalAlignment="Left" Margin="88,268,0,0" VerticalAlignment="Top" Height="68" Width="1139" BorderBrush="#FF8F929D"  FontSize="30"/>
         <TextBox x:Name="email"  Text="admin" Margin="88,164,172,238.4" FontSize="30"></TextBox>
         
         <Image HorizontalAlignment="Left" Height="68" Margin="15,164,0,0" VerticalAlignment="Top" Width="73" Source="/VirtualCinema;component/Resource/mail.jpg"/>

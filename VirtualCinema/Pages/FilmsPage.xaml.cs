@@ -27,9 +27,10 @@ namespace VirtualCinema.Pages
             this.main = main;
             InitializeComponent();
             date.SelectedDate = DateTime.Now;
+            sessions.Children.Clear();
             foreach (Films film in main.bd.Films)
             {
-                createGrid(film);
+                createGrid(film, false);
             }
             date.SelectedDateChanged += changeDate;
         }
@@ -39,14 +40,16 @@ namespace VirtualCinema.Pages
             sessions.Children.Clear();
             foreach (Films film in main.bd.Films)
             {
-                createGrid(film);
+                createGrid(film, isFilm.IsChecked ?? false);
             }
         }
 
-        private void createGrid(Films film)
+        private void createGrid(Films film, bool isChecked)
         {
+            
             Grid grid = new Grid();
             grid.Margin = new Thickness(0, 100, 0, 0);
+
             Border border = new Border();
             border.BorderThickness = new Thickness(2, 2, 2, 2);
             border.CornerRadius = new CornerRadius(10);
@@ -54,6 +57,8 @@ namespace VirtualCinema.Pages
             Grid.SetColumnSpan(border, 2);
             Grid.SetRowSpan(border, 2);
             grid.Children.Add(border);
+
+
             grid.ColumnDefinitions.Add(new ColumnDefinition());
             grid.ColumnDefinitions.Add(new ColumnDefinition());
             grid.RowDefinitions.Add(new RowDefinition());
@@ -139,8 +144,19 @@ namespace VirtualCinema.Pages
             }
 
             grid.Children.Add(shedule);
-            if (shedule.Children.Count > 0)
-                sessions.Children.Add(grid);
+            bool check2 = film.name.ToLower().IndexOf(searchFilm.Text.ToLower()) != -1;
+
+            if (isChecked)
+            {
+                if (shedule.Children.Count > 0 && check2)
+                    sessions.Children.Add(grid);
+            }
+            else
+            {
+                if (shedule.Children.Count > 0)
+                    sessions.Children.Add(grid);
+            }
+               
         }
 
         private void textClick(object sender, MouseEventArgs e)
@@ -150,6 +166,38 @@ namespace VirtualCinema.Pages
             else
             {
                 MessageBox.Show("Для покупки билетов требуется авторизация");
+            }
+        }
+
+        private void IsFilm_Checked(object sender, RoutedEventArgs e)
+        {
+            if (((CheckBox)sender).IsChecked ?? false)
+            {
+                sessions.Children.Clear();
+                foreach (Films film in main.bd.Films)
+                {
+                    createGrid(film, true);
+                }
+            }
+            else
+            {
+                sessions.Children.Clear();
+                foreach (Films film in main.bd.Films)
+                {
+                    createGrid(film, false);
+                }
+            }
+        }
+
+        private void SearchFilm_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (isFilm.IsChecked ?? false)
+            {
+                sessions.Children.Clear();
+                foreach (Films film in main.bd.Films)
+                {
+                    createGrid(film, true);
+                }
             }
         }
     }

@@ -14,5 +14,8 @@
             <StackPanel x:Name="sessions">
             </StackPanel>
         </ScrollViewer>
+        <CheckBox x:Name="isFilm" Margin="546,33,667,538.8" IsChecked="False" Content="включить поиск по фильму" Foreground="White" FontSize="20" Click="IsFilm_Checked" ></CheckBox>
+
+        <TextBox x:Name="searchFilm" Margin="230,33,994,538.8" Text="Начните поиск по фильму" TextChanged="SearchFilm_TextChanged"></TextBox>
     </Grid>
 </Page>

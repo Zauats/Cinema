@@ -33,7 +33,7 @@ namespace VirtualCinema.Pages
             
             foreach (Users user in main.bd.Users)
             {
-                if ((String.Compare(user.password, password.Text) == 0) && (String.Compare(user.email, email.Text) == 0))
+                if ((String.Compare(user.password, password.Password) == 0) && (String.Compare(user.email, email.Text) == 0))
                 {
                     main.hasEntered = true;
                     main.user = user;

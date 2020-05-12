@@ -60,6 +60,12 @@ namespace VirtualCinema.Pages
             foreach (Tickets tickets in session.Tickets)
             {
                 Rectangle rect = new Rectangle();
+                TextBlock text = new TextBlock();
+                text.Text = "ряд: " + tickets.Places.row_number.ToString() + "\nместо" + tickets.Places.column_number.ToString();
+                text.VerticalAlignment = VerticalAlignment.Center;
+                text.Height = 40;
+                text.Margin = new Thickness(30, 0, 0, 0);
+                
                 rect.Fill = Brushes.White;
                 if (tickets.state)
                     rect.Fill = Brushes.Red;
@@ -67,15 +73,20 @@ namespace VirtualCinema.Pages
                 rect.DataContext = tickets;
                 Grid.SetRow(rect, tickets.Places.row_number);
                 Grid.SetColumn(rect, tickets.Places.column_number);
+                Grid.SetRow(text, tickets.Places.row_number);
+                Grid.SetColumn(text, tickets.Places.column_number);
+
                 rect.MouseDown += rectClick;
                 places.Children.Add(rect);
+                places.Children.Add(text);
                 rect.Margin = new Thickness(5, 5, 5, 5);
             }
         }
 
         private void rectClick(object sender, MouseEventArgs e)
         {
-            Rectangle rect = (Rectangle)sender;            if (rect.Fill == Brushes.White)
+            Rectangle rect = (Rectangle)sender;
+            if (rect.Fill == Brushes.White)
             {
                 rect.Fill = Brushes.Blue;
                 price += ((Tickets)rect.DataContext).price;
@@ -90,18 +101,54 @@ namespace VirtualCinema.Pages
 
         private void BuyClick(object sender, RoutedEventArgs e)
         {
-            foreach (Rectangle rect in places.Children)
+            string message = "";
+            int i = 0;
+
+            foreach (object obj in places.Children)
             {
-                if (rect.Fill == Brushes.Blue)
+                try
                 {
-                    Tickets ticket = (Tickets)rect.DataContext;
-                    ticket.state = true;
-                    ticket.user_id = main.user.id;
+                    Rectangle rect = (Rectangle)obj;
+                    if (rect.Fill == Brushes.Blue)
+                    {
+
+                        Tickets ticket = (Tickets)rect.DataContext;
+                        string timeString = "";
+                        if (ticket.Sessions.hour < 10) timeString = "0";
+                        timeString += ticket.Sessions.hour.ToString() + ":";
+                        if (ticket.Sessions.minutes < 10) timeString += "0";
+                        timeString += ticket.Sessions.minutes.ToString();
+                        message += $"билет {i}\n Фильм:{ticket.Sessions.Films.name} \n " +
+                            ticket.Sessions.Session_types.session_type + "\n " +
+                                    ticket.Sessions.Films.duration.ToString() + " мин" + "\n " +
+                                    "оценка: " + ticket.Sessions.Films.rating.ToString() + "\n " +
+                                        "Возрастное ограничение: " + ticket.Sessions.Films.age_limit.ToString() + "+" + "\n " +
+                                        ticket.Sessions.Halls.name + "\n " +
+                                        "Ряд " + ticket.Places.row_number.ToString() + "\n " +
+                                        "Место " + ticket.Places.column_number.ToString() + "\n " +
+                                        "Начало в " + timeString + "\n " +
+                                        "Стоимость: " + ticket.price.ToString() + "\n\n\n\n";
+
+
+                        ticket.state = true;
+                        ticket.user_id = main.user.id;
+                    }
+                    i++;
+                }
+                catch
+                {
+
                 }
             }
+            
+
+            
             main.bd.SaveChanges();
             MessageBox.Show("Спасибо за покупку!");
+            Other.MailConstructor.send("Спасибо за покупку!", message, main.user.login);
             main.MainFrame.Navigate(new FilmsPage(main));
+
+
         }
     }
 }
